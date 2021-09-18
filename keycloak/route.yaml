@@ -1,0 +1,31 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`keycloak.cams7.ml`)
+      kind: Rule
+      middlewares:
+        - name: keycloak-redirect-scheme  
+      services:
+        - name: keycloak-svc
+          port: 8080
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`keycloak.cams7.ml`)
+      kind: Rule
+      services:
+        - name: keycloak-svc
+          port: 8080
+  tls:
+    secretName: keycloak.cams7.ml

@@ -1,0 +1,10 @@
+namespace: keycloak
+commonLabels:
+  env: dev
+  app: keycloak
+namePrefix: keycloak-
+resources:
+- keycloak.yaml
+- middleware-redirect-scheme.yaml
+- route.yaml
+
