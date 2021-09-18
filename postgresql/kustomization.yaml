@@ -1,0 +1,12 @@
+namespace: postgres
+commonLabels:
+  env: dev
+  db: postgres
+namePrefix: postgres-
+resources:
+- secret.yaml
+- pvc.yaml
+- deployment.yaml
+- service.yml
+- route.yaml
+

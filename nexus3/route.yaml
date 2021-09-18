@@ -1,0 +1,63 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`nexus.cams7.ml`)
+      kind: Rule
+      middlewares:
+        - name: nexus3-redirect-scheme  
+      services:
+        - name: nexus3-svc
+          port: 8081
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nexus.cams7.ml`)
+      kind: Rule
+      services:
+        - name: nexus3-svc
+          port: 8081
+  tls:
+    secretName: nexus.cams7.ml
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: public-https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`public.nexus.cams7.ml`)
+      kind: Rule
+      services:
+        - name: nexus3-svc
+          port: 8082
+  tls:
+    secretName: public.nexus.cams7.ml
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: private-https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`private.nexus.cams7.ml`)
+      kind: Rule
+      services:
+        - name: nexus3-svc
+          port: 8083
+  tls:
+    secretName: private.nexus.cams7.ml

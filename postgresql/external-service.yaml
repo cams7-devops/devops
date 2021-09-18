@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-svc
+spec:
+  type: ExternalName
+  externalName: postgres-svc.postgres.svc.cluster.local
+  ports:
+  - port: 5432

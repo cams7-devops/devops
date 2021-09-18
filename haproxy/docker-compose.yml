@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  haproxy:
+    image: haproxy:alpine3.14
+    sysctls:
+      - net.ipv4.ip_unprivileged_port_start=0
+    container_name: haproxy
+    restart: always
+    volumes:
+      - /home/cams7/Desenv/HAProxy:/usr/local/etc/haproxy:ro
+    ports:
+      - 80:80
+      - 443:443
+      - 6443:6443
+      - 2049:2049
+      - 5432:5432
+      - 27017:27017
+      - 6379:6379
+    extra_hosts:
+      - "haproxy.cams7.local:192.168.100.100"

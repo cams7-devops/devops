@@ -1,0 +1,31 @@
+controller:  
+  tag: "2.312-jdk11"
+  
+  adminUser: "admin"
+  adminPassword: "abc12345"
+  
+  resources:
+    requests:
+      cpu: "1000m"
+      memory: "512Mi"
+    limits:
+      cpu: "4000m"
+      memory: "2Gi"
+
+  installPlugins:
+    - kubernetes:1.29.4
+    - workflow-aggregator:2.6
+    - git:4.7.1
+    - configuration-as-code:1.51
+    - blueocean:1.24.8
+    - ansicolor:1.0.0
+
+  installLatestPlugins: false
+
+persistence:
+  storageClass: "managed-nfs-storage"
+
+
+
+
+

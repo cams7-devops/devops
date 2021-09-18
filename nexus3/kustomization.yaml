@@ -1,0 +1,12 @@
+namespace: nexus3
+commonLabels:
+  env: dev
+  app: nexus3
+namePrefix: nexus3-
+resources:
+- pvc.yaml
+- deployment.yaml
+- service.yaml
+- middleware-redirect-scheme.yaml
+- route.yaml
+

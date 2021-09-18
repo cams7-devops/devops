@@ -1,0 +1,9 @@
+namespace: argocd
+commonLabels:
+  env: dev
+  app: argocd
+resources:
+- argocd.yaml
+- middleware-redirect-scheme.yaml
+- route.yaml
+

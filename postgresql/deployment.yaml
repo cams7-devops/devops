@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - image: postgres:9.6.23-stretch
+        imagePullPolicy: IfNotPresent        
+        name: postgres
+        ports:
+        - containerPort: 5432
+          name: postgres
+          protocol: TCP        
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: data
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: password
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata  
+      restartPolicy: Always      
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: postgres-pvc

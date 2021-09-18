@@ -1,0 +1,5 @@
+namespace: nfs-storage
+resources:
+- rbac.yaml
+- class.yaml
+- deployment.yaml

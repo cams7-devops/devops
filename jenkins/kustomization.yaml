@@ -1,0 +1,9 @@
+namespace: jenkins
+commonLabels:
+  env: dev
+  app: jenkins
+namePrefix: jenkins-
+resources:
+- middleware-redirect-scheme.yaml
+- route.yaml
+

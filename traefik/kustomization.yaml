@@ -1,0 +1,6 @@
+namespace: traefik
+namePrefix: dashboard-
+resources:
+- middleware-redirect-scheme.yaml
+- dashboard.yaml
+

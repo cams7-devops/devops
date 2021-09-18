@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: nexus3
+          image: sonatype/nexus3:3.34.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "2560Mi"
+              cpu: "4000m"
+            requests:
+              memory: "2Gi"
+              cpu: "2000m"
+          ports:
+            - containerPort: 8081
+              name: repo
+              protocol: TCP
+            - containerPort: 8082
+              name: public
+              protocol: TCP
+            - containerPort: 8083
+              name: private
+              protocol: TCP
+          volumeMounts:
+            - name: data
+              mountPath: /nexus-data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: nexus3-pvc
