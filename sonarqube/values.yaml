@@ -1,0 +1,26 @@
+image:
+  tag: 9.1.0-community
+
+resources:
+  limits:
+    cpu: 4000m
+    memory: 2Gi
+  requests:
+    cpu: 2000m
+    memory: 1Gi
+
+persistence:
+  enabled: true
+  storageClass: managed-nfs-storage
+  size: 15Gi
+
+jdbcOverwrite:
+  enable: true
+  jdbcUrl: "jdbc:postgresql://postgres-svc:5432/sonarqube?socketTimeout=1500"
+  jdbcUsername: "sonarqube"
+  jdbcSecretName: "postgres-secret"
+  jdbcSecretPasswordKey: "password"
+
+postgresql:
+  enabled: false
+

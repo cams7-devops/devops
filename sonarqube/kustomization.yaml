@@ -1,0 +1,9 @@
+namespace: sonarqube
+commonLabels:
+  env: dev
+  app: sonarqube
+namePrefix: sonarqube-
+resources:
+- middleware-redirect-scheme.yaml
+- route.yaml
+
