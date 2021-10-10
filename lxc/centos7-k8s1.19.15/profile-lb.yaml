@@ -1,0 +1,18 @@
+config:
+#  limits.cpu: "2"
+#  limits.memory: 2GB
+  security.privileged: "true"
+  security.nesting: "false"
+description: LXD profile for Load Balancer
+devices:
+  eth0:
+    name: eth0
+    nictype: bridged
+    parent: br0
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+name: lb
+used_by: []
