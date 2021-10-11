@@ -132,20 +132,20 @@ systemctl enable sshd
 systemctl start sshd
 
 # Set Root password
-echo "[TASK 11] Set root password"
+echo "[TASK 13] Set root password"
 echo "abc12345" | passwd --stdin root >/dev/null 2>&1
 
 # Install additional required packages
-echo "[TASK 12] Install additional packages"
+echo "[TASK 14] Install additional packages"
 yum install -y -q which net-tools sudo sshpass less >/dev/null 2>&1
 
 # Hack required to provision K8s v1.15+ in LXC containers
-echo "[TASK 13] Hack required to provision K8s v1.15+ in LXC containers"
+echo "[TASK 15] Hack required to provision K8s v1.15+ in LXC containers"
 mknod /dev/kmsg c 1 11
 chmod +x /etc/rc.d/rc.local
 echo 'mknod /dev/kmsg c 1 11' >> /etc/rc.d/rc.local
 
-echo "[TASK 14] Update /etc/hosts file"
+echo "[TASK 16] Update /etc/hosts file"
 cat >> /etc/hosts <<EOF
 192.168.100.100   k8s.cams7.ml
 192.168.100.101   lb101.cams7-vaio.local
@@ -179,7 +179,7 @@ EOF
 
 if [[ $(hostname) =~ .*master.* ]]
 then
-  echo "[TASK 15] Pull required containers"
+  echo "[TASK 17] Pull required containers"
   kubeadm config images pull >/dev/null 2>&1
 fi
 
@@ -187,16 +187,16 @@ if [[ $(hostname) =~ .*master111.* ]]
 then
 
   # Initialize Kubernetes
-  echo "[TASK 16] Initialize Kubernetes Cluster"
+  echo "[TASK 18] Initialize Kubernetes Cluster"
   kubeadm init  --control-plane-endpoint="k8s.cams7.ml:6443" --upload-certs --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=all >> /root/kubeinit.log 2>&1
 
   # Copy Kube admin config
-  echo "[TASK 17] Copy kube admin config to root user .kube directory"
+  echo "[TASK 19] Copy kube admin config to root user .kube directory"
   mkdir /root/.kube
   cp /etc/kubernetes/admin.conf /root/.kube/config
 
   # Deploy flannel network
-  echo "[TASK 18] Deploy flannel network"
+  echo "[TASK 20] Deploy flannel network"
   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml > /dev/null 2>&1
 
 fi
