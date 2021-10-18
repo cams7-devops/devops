@@ -7,7 +7,7 @@ services:
     container_name: haproxy
     restart: always
     volumes:
-      - /home/cams7/Desenv/HAProxy:/usr/local/etc/haproxy:ro
+      - /home/cams7/Dev/DevOps/haproxy:/usr/local/etc/haproxy:ro
     ports:
       - 80:80
       - 443:443
