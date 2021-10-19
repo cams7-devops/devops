@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  nfs:
+    image: itsthenetwork/nfs-server-alpine:12
+    container_name: nfs
+    restart: always
+    privileged: true
+    environment:
+      - SHARED_DIRECTORY=/data
+    volumes:
+      - /home/cams7/Dev/Others/nfs/nfs-data:/data
+    ports:
+      - 2049:2049
