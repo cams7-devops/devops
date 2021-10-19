@@ -170,7 +170,7 @@ cat >> /etc/hosts <<EOF
 192.168.100.128   kworker128.cams7-qbex.local
 192.168.100.129   kworker129.cams7-qbex.local
 192.168.100.130   traefik.cams7.local
-192.168.100.105   nfs.cams7.local
+192.168.100.12    nfs.cams7.local
 EOF
 
 #######################################
