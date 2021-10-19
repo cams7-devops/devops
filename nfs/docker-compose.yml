@@ -8,6 +8,6 @@ services:
     environment:
       - SHARED_DIRECTORY=/data
     volumes:
-      - /home/cams7/Dev/Others/nfs/nfs-data:/data
+      - /home/cams7/Dev/DevOps/nfs/nfs-data:/data
     ports:
       - 2049:2049
