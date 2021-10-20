@@ -145,14 +145,14 @@ backend router_k8s
     option tcp-check 
     balance roundrobin 
     server kmaster111 kmaster111.cams7-vaio.local:6443 check fall 3 rise 2
-#    server kmaster112 kmaster112.cams7-vaio.local:6443 check fall 3 rise 2
-#    server kmaster113 kmaster113.cams7-vaio.local:6443 check fall 3 rise 2
+    server kmaster112 kmaster112.cams7-vaio.local:6443 check fall 3 rise 2
+    server kmaster113 kmaster113.cams7-vaio.local:6443 check fall 3 rise 2
     server kmaster114 kmaster114.cams7-dell.local:6443 check fall 3 rise 2
-#    server kmaster115 kmaster115.cams7-dell.local:6443 check fall 3 rise 2
-#    server kmaster116 kmaster116.cams7-dell.local:6443 check fall 3 rise 2
+    server kmaster115 kmaster115.cams7-dell.local:6443 check fall 3 rise 2
+    server kmaster116 kmaster116.cams7-dell.local:6443 check fall 3 rise 2
     server kmaster117 kmaster117.cams7-qbex.local:6443 check fall 3 rise 2
-#    server kmaster118 kmaster118.cams7-qbex.local:6443 check fall 3 rise 2
-#    server kmaster119 kmaster119.cams7-qbex.local:6443 check fall 3 rise 2
+    server kmaster118 kmaster118.cams7-qbex.local:6443 check fall 3 rise 2
+    server kmaster119 kmaster119.cams7-qbex.local:6443 check fall 3 rise 2
 
 backend router_nfs
     mode tcp

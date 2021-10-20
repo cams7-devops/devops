@@ -183,22 +183,6 @@ then
   kubeadm config images pull >/dev/null 2>&1
 fi
 
-if [[ $(hostname) =~ .*master111.* ]]
-then
 
-  # Initialize Kubernetes
-  echo "[TASK 18] Initialize Kubernetes Cluster"
-  kubeadm init  --control-plane-endpoint="k8s.cams7.ml:6443" --upload-certs --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=all >> /root/kubeinit.log 2>&1
-
-  # Copy Kube admin config
-  echo "[TASK 19] Copy kube admin config to root user .kube directory"
-  mkdir /root/.kube
-  cp /etc/kubernetes/admin.conf /root/.kube/config
-
-  # Deploy flannel network
-  echo "[TASK 20] Deploy flannel network"
-  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml > /dev/null 2>&1
-
-fi
 
 
