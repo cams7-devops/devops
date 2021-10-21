@@ -4,22 +4,30 @@ network:
   ethernets:
     enp4s0:
       dhcp4: no
-      dhcp6: no
+#      dhcp6: no
   bridges:
     br0:
       dhcp4: no
 #      dhcp4: yes
-      dhcp6: no
+#      dhcp6: no
       interfaces:
-        - enp4s0
+      - enp4s0
       addresses: 
-        - 192.168.100.11/24
+      - 192.168.100.11/24
       gateway4: 192.168.100.1
       nameservers:
         addresses:
-          - 192.168.100.1
-          - 8.8.8.8
-          - 8.8.4.4
+        - 192.168.100.1
+        - 192.168.2.1
+        - 8.8.8.8
+        - 8.8.4.4
+      routes:
+      - to: default
+        via: 192.168.100.1
+        metric: 200
+      - to: default
+        via: 192.168.2.1
+        metric: 300
       parameters:
-          stp: false
-          forward-delay: 0
+        stp: false
+        forward-delay: 0
