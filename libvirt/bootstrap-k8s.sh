@@ -80,3 +80,6 @@ then
   echo "[TASK 11] Pull required containers"
   kubeadm config images pull >/dev/null 2>&1
 fi
+
+echo "[TASK 12] Install NFS"
+apt install -qq -y nfs-common >/dev/null 2>&1
