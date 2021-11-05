@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        app: dev
+    spec:
+      containers:
+      - name: github-actions-runner
+        image: cams7/github-actions-runner:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+          - configMapRef:
+            name: runner-config
+        volumeMounts:
+          - name: data
+            mountPath: /home/github-actions-runner/_work
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: runner-pvc

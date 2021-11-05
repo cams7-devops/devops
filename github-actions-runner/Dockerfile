@@ -17,6 +17,7 @@ WORKDIR /home/github-actions-runner
 
 RUN curl -O -L https://github.com/actions/runner/releases/download/v$RUNNER_VERSION/actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
 RUN tar xzf ./actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
+RUN rm actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
 RUN sudo ./bin/installdependencies.sh
 
 COPY --chown=github-actions-runner:github-actions-runner entrypoint.sh ./entrypoint.sh

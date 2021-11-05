@@ -1,0 +1,15 @@
+namespace: github-actions-runner
+commonLabels:
+  env: dev
+  app: runner
+namePrefix: runner-
+resources:
+- pvc.yaml
+- deployment.yaml
+
+configMapGenerator:
+- name: config
+  literals:
+  - GITHUB_PERSONAL_TOKEN=TOKEN
+  - GITHUB_OWNER=OWNER
+  - GITHUB_REPOSITORY=REPOSITORY
