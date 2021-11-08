@@ -18,10 +18,10 @@ spec:
         imagePullPolicy: IfNotPresent
         envFrom:
           - configMapRef:
-            name: runner-config
+              name: runner-config
         volumeMounts:
           - name: data
-            mountPath: /home/github-actions-runner/_work
+            mountPath: /home/github/_work
       volumes:
         - name: data
           persistentVolumeClaim:
