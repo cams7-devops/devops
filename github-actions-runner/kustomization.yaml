@@ -1,4 +1,4 @@
-namespace: argocd-app-runner
+namespace: github-actions-runner
 commonLabels:
   env: dev
   app: runner
@@ -11,7 +11,7 @@ configMapGenerator:
 - name: config
   literals:
   - GITHUB_PAT=YOUR_GITHUB_ACCESS_TOKEN
-  - GITHUB_OWNER=cams7
-  - GITHUB_REPOSITORY=argocd-app
-  - RUNNER_LABELS=dev,k8s,argocd-app
+  - GITHUB_OWNER=YOUR_GITHUB_USERNAME
+  - GITHUB_REPOSITORY=YOUR_GITHUB_REPOSITORY
+  - RUNNER_LABELS=dev,k8s
   - DOCKER_HOST=tcp://192.168.100.13:2375
