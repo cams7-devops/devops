@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: dev
+        env: dev
     spec:
       containers:
       - name: github-actions-runner
